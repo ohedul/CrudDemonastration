@@ -44,7 +44,7 @@ public class ApiResource {
         return patientService.findAll();
     }
 
-    //find one doctor by id
+    //find one doctor by name
     @GetMapping(value = "/get/doctor/{name}")
     public ResponseEntity<Doctor> findDocById(@PathVariable(value = "name") final String name){
         Doctor doctor = doctorService.FindByName(name);
@@ -55,7 +55,7 @@ public class ApiResource {
         return ResponseEntity.ok().body(doctor);
     }
 
-    //find one patient by id
+    //find one patient by name
     @GetMapping(value = "/get/patient/{name}")
     public ResponseEntity<Patient> findPatById(@PathVariable(value = "name") final String name){
         Patient patient = patientService.findByName(name);

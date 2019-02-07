@@ -23,7 +23,10 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-
+    //find patient by name
+    public Patient findByName(String name) {
+        return patientRepository.findByName(name);
+    }
 
     //delete a patient
     public void deletePatient(Patient patient){
@@ -31,8 +34,5 @@ public class PatientService {
     }
 
 
-    //find patient by id
-    public Patient findByName(String name) {
-        return patientRepository.findByName(name);
-    }
+
 }
