@@ -8,4 +8,6 @@ import org.springframework.stereotype.Component;
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
     //helps to find a doctor by name
     Doctor findByName(String name);
+    //helps to find a doctor by id
+    Doctor findByid(int doctor_id);
 }
