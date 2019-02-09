@@ -28,6 +28,12 @@ public class DoctorService {
         return doctorRepository.findByName(name);
     }
 
+    //find one doctor by id
+    public Doctor FindByDocId(int doctor_id){
+        return doctorRepository.findByid(doctor_id);
+    }
+
+
     //delete a doctor
     public void deleteDoc(Doctor doctor){
         doctorRepository.delete(doctor);
