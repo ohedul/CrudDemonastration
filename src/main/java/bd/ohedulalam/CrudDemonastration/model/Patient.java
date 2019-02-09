@@ -12,7 +12,7 @@ public class Patient {
     @Id
     @GeneratedValue
     @Column(name = "patient_id")
-    private Integer patient_id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -32,12 +32,12 @@ public class Patient {
     @Column(name = "symptom_summary")
     private String symptom_summary;
 
-    public Integer getPatient_id() {
-        return patient_id;
+    public int getId() {
+        return id;
     }
 
-    public void setPatient_id(Integer patient_id) {
-        this.patient_id = patient_id;
+    public void setId(int patient_id) {
+        this.id = patient_id;
     }
 
     public String getName() {
