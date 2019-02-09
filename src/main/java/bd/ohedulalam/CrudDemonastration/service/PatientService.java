@@ -28,6 +28,10 @@ public class PatientService {
         return patientRepository.findByName(name);
     }
 
+    //find patient by id
+    public Patient findPatById(int patient_id){return patientRepository.findByid(patient_id);}
+    
+
     //delete a patient
     public void deletePatient(Patient patient){
         patientRepository.delete(patient);
