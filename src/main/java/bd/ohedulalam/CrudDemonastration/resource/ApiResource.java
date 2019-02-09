@@ -46,7 +46,7 @@ public class ApiResource {
 
     //find one doctor by name
     @GetMapping(value = "/get/doctor/{name}")
-    public ResponseEntity<Doctor> findDocById(@PathVariable(value = "name") final String name){
+    public ResponseEntity<Doctor> findDocByName(@PathVariable(value = "name") final String name){
         Doctor doctor = doctorService.FindByName(name);
         if(doctor == null){
             return ResponseEntity.notFound().build();
@@ -55,9 +55,19 @@ public class ApiResource {
         return ResponseEntity.ok().body(doctor);
     }
 
+    //find one doctor by id
+    @GetMapping(value = "/get/doctor/id/{doctor_id}")
+    public ResponseEntity<Doctor> findDocById(@PathVariable(value = "doctor_id") final int doctor_id){
+        Doctor doctor = doctorService.FindByDocId(doctor_id);
+        if(doctor == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(doctor);
+    }
+
     //find one patient by name
     @GetMapping(value = "/get/patient/{name}")
-    public ResponseEntity<Patient> findPatById(@PathVariable(value = "name") final String name){
+    public ResponseEntity<Patient> findPatByName(@PathVariable(value = "name") final String name){
         Patient patient = patientService.findByName(name);
         if(patient == null){
             return ResponseEntity.notFound().build();
@@ -66,10 +76,20 @@ public class ApiResource {
         return ResponseEntity.ok().body(patient);
     }
 
+    //find one patient by id
+    @GetMapping(value = "/get/patient/id/{patient_id}")
+    public ResponseEntity<Patient> findPatById(@PathVariable(value = "patient_id")final int patient_id){
+        Patient patient =patientService.findPatById(patient_id);
+        if(patient == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(patient);
+    }
+
     //update doctor
-    @PutMapping(value = "/update/doctor/{name}")
-    public ResponseEntity<Doctor> upadateDoctor(@PathVariable(value = "name") final String name, @Valid @RequestBody Doctor docDetails){
-        Doctor doctor = doctorService.FindByName(name);
+    @PutMapping(value = "/update/doctor/{doctor_id}")
+    public ResponseEntity<Doctor> upadateDoctor(@PathVariable(value = "doctor_id") final int doctor_id, @Valid @RequestBody Doctor docDetails){
+        Doctor doctor = doctorService.FindByDocId(doctor_id);
         if(doctor == null){
             return ResponseEntity.notFound().build();
         }
@@ -83,9 +103,9 @@ public class ApiResource {
     }
 
     //update patient
-    @PutMapping(value = "/update/patient/{name}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable(value = "name") final String name, @Valid @RequestBody Patient patDetails){
-        Patient patient = patientService.findByName(name);
+    @PutMapping(value = "/update/patient/{patient_id}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable(value = "patient_id") final int patient_id, @Valid @RequestBody Patient patDetails){
+        Patient patient = patientService.findPatById(patient_id);
         if(patient == null){
             return ResponseEntity.notFound().build();
         }
@@ -102,9 +122,9 @@ public class ApiResource {
     }
 
     //delete a doctor
-    @DeleteMapping(value = "/delete/doctor/{name}")
-    public ResponseEntity<Doctor> deleteDoctor(@PathVariable(value = "name") final String name){
-        Doctor doctor = doctorService.FindByName(name);
+    @DeleteMapping(value = "/delete/doctor/{doctor_id}")
+    public ResponseEntity<Doctor> deleteDoctor(@PathVariable(value = "doctor_id") final int doctor_id){
+        Doctor doctor = doctorService.FindByDocId(doctor_id);
         if(doctor == null){
             return ResponseEntity.notFound().build();
         }
@@ -114,9 +134,9 @@ public class ApiResource {
     }
 
     //delete a patient
-    @DeleteMapping(value = "/delete/patient/{name}")
-    public ResponseEntity<Patient> deletePatient(@PathVariable(value = "name") final String name){
-        Patient patient = patientService.findByName(name);
+    @DeleteMapping(value = "/delete/patient/{patient_id}")
+    public ResponseEntity<Patient> deletePatient(@PathVariable(value = "patient_id") final int patient_id){
+        Patient patient = patientService.findPatById(patient_id);
         if(patient == null){
             return ResponseEntity.notFound().build();
         }
