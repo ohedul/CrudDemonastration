@@ -12,7 +12,7 @@ public class Doctor {
     @Id
     @GeneratedValue
     @Column(name = "doctor_id")
-    private Integer doctor_id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -23,12 +23,12 @@ public class Doctor {
     @Column(name = "joining_date")
     private Date joining_date;
 
-    public Integer getDoctor_id() {
-        return doctor_id;
+    public int getId() {
+        return id;
     }
 
-    public void setDoctor_id(Integer doctor_id) {
-        this.doctor_id = doctor_id;
+    public void setId(int doctor_id) {
+        this.id = doctor_id;
     }
 
     public String getName() {
